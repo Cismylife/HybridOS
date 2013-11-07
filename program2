@@ -1,0 +1,66 @@
+build = "1.7.2"
+codename = "Earth"
+
+function drawIcon()
+icon = paintutils.loadImage("//.system/system16/icon/icon")
+paintutils.drawImage(icon, 2, 3)
+end
+
+
+screenX, screenY = term.getSize()
+
+function main()
+term.clear()
+term.setCursorPos(1,1)
+sleep(0)
+while true do
+term.clear()
+term.setBackgroundColor(colors.lightBlue)
+term.clear()
+paintutils.drawLine(1, 1, screenX, 1, colors.lightGray)
+term.setCursorPos(39, 1)
+term.setTextColor(colors.black)
+print("Version "..build)
+
+term.setCursorPos(1, 1)
+term.setTextColor(colors.black)
+print("All Programs")
+
+term.setCursorPos(1, 10)
+term.setTextColor(colors.black)
+term.setBackgroundColor(colors.lightBlue)
+drawIcon()
+
+term.setCursorPos(10, 10)
+term.setBackgroundColor(colors.lightBlue)
+print("This Icon is still in Testing mode")
+
+term.setCursorPos(1, 14)
+term.setTextColor(colors.black)
+term.setBackgroundColor(colors.lightBlue)
+print("[<--]")
+local event, button, X, Y = os.pullEvent("mouse_click")
+if event == "mouse_click" then
+if X >= 1 and X <= 40 and Y == 3 and button == 1 then
+print("Starting")
+sleep(0)
+shell.run("//.system/programs/taco")
+if X >= 1 and X <= 39 and Y == 10 and button == 1 then
+term.clear()
+term.setCursorPos(1,1)
+term.setTextColor(colors.yellow)
+break
+end
+
+elseif X >= 1 and X <= 10 and Y == 14 and button == 1 then
+break
+end
+end
+end
+end
+
+main()
+
+
+
+
