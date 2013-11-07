@@ -1,0 +1,63 @@
+build = "1.7.2"
+codename = "Earth"
+
+screenX, screenY = term.getSize()
+
+function main()
+term.clear()
+term.setCursorPos(1,1)
+sleep(0)
+while true do
+term.clear()
+term.setBackgroundColor(colors.lightBlue)
+term.clear()
+paintutils.drawLine(1, 1, screenX, 1, colors.lightGray)
+term.setCursorPos(39, 1)
+term.setTextColor(colors.black)
+print("Version "..build)
+term.setCursorPos(1, 1)
+term.setTextColor(colors.black)
+print("All Programs")
+term.setCursorPos(1, 3)
+term.setTextColor(colors.black)
+term.setBackgroundColor(colors.lightBlue)
+print("Taco Text Editor")
+
+term.setCursorPos(1, 4)
+term.setTextColor(colors.black)
+term.setBackgroundColor(colors.lightBlue)
+print("Gui File Browser")
+
+term.setCursorPos(1, 5)
+term.setTextColor(colors.black)
+term.setBackgroundColor(colors.lightBlue)
+print("[<--]")
+term.setCursorPos(1, 6)
+term.setTextColor(colors.black)
+term.setBackgroundColor(colors.lightBlue)
+print("[-->]")
+local event, button, X, Y = os.pullEvent("mouse_click")
+if event == "mouse_click" then
+if X >= 1 and X <= 40 and Y == 3 and button == 1 then
+print("Starting")
+sleep(0)
+shell.run("//.system/programs/taco")
+elseif X >= 1 and X <= 39 and Y == 6 and button == 1 then
+print("Starting")
+sleep(0)
+shell.run("//.system/program2")
+elseif X >= 1 and X <= 38 and Y == 4 and button == 1 then
+print("Starting Gui FileBrowser!")
+sleep(0)
+shell.run("//.system/apps/gfb")
+elseif X >= 1 and X <= 37 and Y == 5 and button == 1 then
+break
+end
+end
+end
+end
+
+main()
+
+
+
